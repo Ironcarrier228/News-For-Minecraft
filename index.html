@@ -4,45 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Новости: Minecraft и ИИ в 2025</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f5f5f5;
-    }
-    .news-section {
-      background: white;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #333;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <div class="container">
+      <h1>🎮 Новостной Портал 2025</h1>
+      <p class="subtitle">Актуальные новости о Minecraft и искусственном интеллекте</p>
+    </div>
+  </header>
 
-  <div class="news-section" id="minecraft-news">
-    <h2>Новости по Minecraft</h2>
-    <ul id="minecraft-list">
-      <!-- Новости будут загружены скриптом -->
-    </ul>
-  </div>
+  <main class="container">
+    <div class="news-section minecraft-section" id="minecraft-news">
+      <div class="section-header">
+        <h2>🟩 Новости по Minecraft</h2>
+        <span class="update-time" id="minecraft-time"></span>
+      </div>
+      <ul id="minecraft-list" class="news-list">
+        <!-- Новости будут загружены скриптом -->
+      </ul>
+    </div>
 
-  <div class="news-section" id="ai-news">
-    <h2>Какая ИИ-модель лучше в 2025 году?</h2>
-    <ul id="ai-list">
-      <!-- Новости будут загружены скриптом -->
-    </ul>
-  </div>
+    <div class="news-section ai-section" id="ai-news">
+      <div class="section-header">
+        <h2>🤖 Какая ИИ-модель лучше в 2025 году?</h2>
+        <span class="update-time" id="ai-time"></span>
+      </div>
+      <ul id="ai-list" class="news-list">
+        <!-- Новости будут загружены скриптом -->
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Новостной Портал. Все права защищены.</p>
+    </div>
+  </footer>
 
   <!-- Подключаем отдельные JS-файлы -->
   <script src="minecraft-news.js"></script>
