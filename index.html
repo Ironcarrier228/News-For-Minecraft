@@ -7,32 +7,63 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <header class="animated-header">
     <div class="container">
-      <h1>🎮 Новостной Портал 2025</h1>
-      <p class="subtitle">Актуальные новости о Minecraft и искусственном интеллекте</p>
+      <div class="header-content">
+        <h1 class="main-title">
+          <span class="title-part">🎮</span>
+          <span class="title-part">Новостной</span>
+          <span class="title-part">Портал</span>
+          <span class="title-part year">2025</span>
+        </h1>
+        <p class="subtitle animated-subtitle">Актуальные новости о Minecraft и искусственном интеллекте</p>
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="minecraft-version">1.21</span>
+            <span class="stat-label">Minecraft</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="ai-models">8</span>
+            <span class="stat-label">AI Моделей</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="news-count">14</span>
+            <span class="stat-label">Новостей</span>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="header-particles"></div>
   </header>
 
   <main class="container">
     <div class="news-section minecraft-section" id="minecraft-news">
       <div class="section-header">
-        <h2>🟩 Новости по Minecraft</h2>
-        <span class="update-time" id="minecraft-time"></span>
+        <h2>🟩 Minecraft: Версии и Обновления</h2>
+        <div class="version-tabs">
+          <button class="version-tab active" data-version="latest">Последняя</button>
+          <button class="version-tab" data-version="snapshot">Снапшоты</button>
+          <button class="version-tab" data-version="legacy">Классика</button>
+          <span class="update-time" id="minecraft-time"></span>
+        </div>
       </div>
-      <ul id="minecraft-list" class="news-list">
-        <!-- Новости будут загружены скриптом -->
-      </ul>
+      <div id="minecraft-content" class="minecraft-content">
+        <!-- Контент будет загружен скриптом -->
+      </div>
     </div>
 
     <div class="news-section ai-section" id="ai-news">
       <div class="section-header">
-        <h2>🤖 Какая ИИ-модель лучше в 2025 году?</h2>
-        <span class="update-time" id="ai-time"></span>
+        <h2>🤖 Рейтинг ИИ-моделей 2025</h2>
+        <div class="section-controls">
+          <button class="view-toggle active" data-view="grid">Сетка</button>
+          <button class="view-toggle" data-view="list">Список</button>
+          <span class="update-time" id="ai-time"></span>
+        </div>
       </div>
-      <ul id="ai-list" class="news-list">
-        <!-- Новости будут загружены скриптом -->
-      </ul>
+      <div id="ai-content" class="ai-content">
+        <!-- Контент будет загружен скриптом -->
+      </div>
     </div>
   </main>
 
