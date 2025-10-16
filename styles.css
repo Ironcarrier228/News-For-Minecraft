@@ -6,10 +6,19 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   min-height: 100vh;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -20,9 +29,28 @@ body {
 
 header {
   background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 30px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 header h1 {
@@ -30,6 +58,20 @@ header h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textGradient 3s ease infinite;
+}
+
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .subtitle {
@@ -43,17 +85,36 @@ main {
 }
 
 .news-section {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 30px;
   margin-bottom: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.news-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.news-section:hover::before {
+  transform: scaleX(1);
 }
 
 .news-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .minecraft-section {
@@ -90,36 +151,59 @@ main {
 }
 
 .news-list li {
-  padding: 15px;
-  margin-bottom: 12px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 3px solid transparent;
-  transition: all 0.3s ease;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  border-left: 4px solid transparent;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
-  padding-left: 20px;
+  padding-left: 25px;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.news-list li:before {
-  content: '●';
+.news-list li::before {
+  content: '';
   position: absolute;
-  left: 8px;
-  color: #667eea;
-  font-size: 0.8em;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  transition: all 0.3s ease;
 }
 
-.minecraft-section .news-list li:before {
-  color: #50C878;
+.minecraft-section .news-list li::before {
+  background: linear-gradient(180deg, #50C878, #32CD32);
+}
+
+.news-list li::after {
+  content: '✨';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-size: 1.2em;
+}
+
+.news-list li:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) rotate(360deg);
 }
 
 .news-list li:hover {
-  background: #e9ecef;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
   border-left-color: #667eea;
-  transform: translateX(5px);
+  transform: translateX(10px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
 }
 
 .minecraft-section .news-list li:hover {
   border-left-color: #50C878;
+  box-shadow: 0 10px 25px rgba(80, 200, 120, 0.2);
 }
 
 footer {
@@ -134,16 +218,106 @@ footer {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .news-list li {
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.section-header h2 {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+/* Добавляем пульсирующий эффект для заголовков */
+.section-header h2:hover {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Стили для новых элементов */
+.news-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rank-badge, .type-badge {
+  background: var(--rank-color, #667eea);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8em;
+  min-width: 60px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: bounceIn 0.6s ease-out;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.type-badge {
+  background: var(--type-color, #50C878);
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0) rotate(180deg); }
+  50% { transform: scale(1.2) rotate(0deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.news-text {
+  flex: 1;
+  font-size: 1.05em;
+  line-height: 1.5;
+}
+
+.typing-effect {
+  position: relative;
+}
+
+.typing-effect::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: #667eea;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Дополнительные анимации */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.news-section:hover .rank-badge {
+  animation: float 2s ease-in-out infinite;
 }
 
 /* Адаптивность */
@@ -164,5 +338,15 @@ footer {
   
   .news-section {
     padding: 20px;
+  }
+  
+  .news-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .rank-badge {
+    align-self: flex-start;
   }
 }
