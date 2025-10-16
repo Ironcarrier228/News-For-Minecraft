@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+header h1 {
+  color: #667eea;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1em;
+}
+
+main {
+  padding-bottom: 40px;
+}
+
+.news-section {
+  background: white;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.minecraft-section {
+  border-left: 5px solid #50C878;
+}
+
+.ai-section {
+  border-left: 5px solid #667eea;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header h2 {
+  color: #333;
+  font-size: 1.8em;
+}
+
+.update-time {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+}
+
+.news-list li {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 20px;
+}
+
+.news-list li:before {
+  content: '●';
+  position: absolute;
+  left: 8px;
+  color: #667eea;
+  font-size: 0.8em;
+}
+
+.minecraft-section .news-list li:before {
+  color: #50C878;
+}
+
+.news-list li:hover {
+  background: #e9ecef;
+  border-left-color: #667eea;
+  transform: translateX(5px);
+}
+
+.minecraft-section .news-list li:hover {
+  border-left-color: #50C878;
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px 0;
+  text-align: center;
+  color: #666;
+  margin-top: 40px;
+}
+
+/* Анимация загрузки */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.news-list li {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2em;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section-header h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .news-section {
+    padding: 20px;
+  }
+}
